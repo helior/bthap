@@ -5,13 +5,13 @@
  * @see system_theme_settings();
  */
 function bthap_form_system_theme_settings_alter(&$form, &$form_state) {
-  
+
   $form['bthap'] = array(
     '#type' => 'fieldset',
     '#title' => t('Settings specific to the Base theme for Highly Attractive People'),
     '#weight' => -10,
   );
-  
+
   $form['bthap']['disable_ie_compatibility'] = array(
     '#type' => 'checkbox',
     '#title' => t('Disable forcing "Edge" render system and Google Chrome Frame for Internet Explorer'),

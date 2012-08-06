@@ -20,8 +20,8 @@ function bthap_html_head_alter(&$elements) {
     ),
     '#access' => !theme_get_setting('disable_x_ua_compatibility'),
   );
-  
-  
+
+
   // Optimize the mobile viewport.
   $elements['bthap_viewport'] = array(
     '#type' => 'html_tag',
@@ -31,7 +31,7 @@ function bthap_html_head_alter(&$elements) {
       'content' => 'width=device-width,initial-scale=1',
     ),
   );
-  
+
   // Add HTML5 shiv @todo make configurable and provide local copy fallback
   $elements['bthap_html5_shiv'] = array(
     '#type' => 'html_tag',
@@ -45,8 +45,8 @@ function bthap_html_head_alter(&$elements) {
       '!IE' => FALSE,
     ),
   );
-  
-  
+
+
 }
 
 /**
@@ -59,8 +59,10 @@ function bthap_process_html(&$vars) {
   $html_attributes = array(
     'xmlns' => 'http://www.w3.org/1999/xhtml',
     'xml:lang' => $vars['language']->language,
+    'lang' => $vars['language']->language,
     'version' => 'XHTML+RDFa 1.0',
     'dir' => $vars['language']->dir,
   );
+
   $vars['html_attributes'] = drupal_attributes($html_attributes) . $vars['rdf_namespaces'];
 }
