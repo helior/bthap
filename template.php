@@ -28,7 +28,7 @@ function bthap_html_head_alter(&$elements) {
     '#tag' => 'meta',
     '#attributes' => array(
       'name' => 'viewport',
-      'content' => 'width=device-width,initial-scale=1',
+      'content' => 'width=device-width',
     ),
   );
 
