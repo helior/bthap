@@ -3,7 +3,7 @@
 /**
  * Implements hook_html_head_alter().
  */
-function highly_attractive_people_html_head_alter(&$elements) {
+function bthap_html_head_alter(&$elements) {
   // @see http://html5boilerplate.com/docs/The-markup/#make-sure-the-latest-version-of-ie-is-used.
   // Force IE browsers to render with Google Chrome Frame plugin, if installed
   // locally. Otherwise, force IE browsers to never fall back to compatibility
@@ -11,7 +11,7 @@ function highly_attractive_people_html_head_alter(&$elements) {
   // fallback to compatibility mode when we're debugging for IE 7 (but want to
   // use IE8's slightly better developer tools) So you can disable this feature
   // in the theme settings.
-  $elements['highly_attractive_people_x_ua_compatible'] = array(
+  $elements['bthap_x_ua_compatible'] = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
     '#attributes' => array(
@@ -23,7 +23,7 @@ function highly_attractive_people_html_head_alter(&$elements) {
   
   
   // Optimize the mobile viewport.
-  $elements['highly_attractive_people_viewport'] = array(
+  $elements['bthap_viewport'] = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
     '#attributes' => array(
@@ -33,7 +33,7 @@ function highly_attractive_people_html_head_alter(&$elements) {
   );
   
   // Add HTML5 shiv @todo make configurable and provide local copy fallback
-  $elements['highly_attractive_people_html5_shiv'] = array(
+  $elements['bthap_html5_shiv'] = array(
     '#type' => 'html_tag',
     '#tag' => 'script',
     '#value' => '',
@@ -52,7 +52,7 @@ function highly_attractive_people_html_head_alter(&$elements) {
 /**
  * Implements hook_preprocess_html().
  */
-function highly_attractive_people_process_html(&$vars) {
+function bthap_process_html(&$vars) {
   // Aggragate the usual attributes that are placed in the html tag into a
   // single variable. Classes should not be added to this array since
   // contextual classes will be applied conditionally by the browser.

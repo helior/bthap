@@ -4,15 +4,15 @@
  * Implements hook_form_FORM_ID_alter().
  * @see system_theme_settings();
  */
-function highly_attractive_people_form_system_theme_settings_alter(&$form, &$form_state) {
+function bthap_form_system_theme_settings_alter(&$form, &$form_state) {
   
-  $form['highly_attractive_people'] = array(
+  $form['bthap'] = array(
     '#type' => 'fieldset',
     '#title' => t('Settings specific to the Base theme for Highly Attractive People'),
     '#weight' => -10,
   );
   
-  $form['highly_attractive_people']['disable_ie_compatibility'] = array(
+  $form['bthap']['disable_ie_compatibility'] = array(
     '#type' => 'checkbox',
     '#title' => t('Disable forcing "Edge" render system and Google Chrome Frame for Internet Explorer'),
     '#default_value' => theme_get_setting('disable_ie_compatibility'),
