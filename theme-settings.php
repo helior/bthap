@@ -23,12 +23,13 @@ function bthap_form_system_theme_settings_alter(&$form, &$form_state) {
     '#type' => 'checkbox',
     '#title' => t('Suppresses IE6 image toolbar'),
     '#default_value' => theme_get_setting('bthap_suppress_ie6_image_toolbar'),
-    '#description' => t('See more info at !link', array('!link' => l('http://technet.microsoft.com/en-us/library/dd361901.aspx', 'http://technet.microsoft.com/en-us/library/dd361901.aspx', array('external' => TRUE, 'attributes' => array('target' => '_blank'))))),
+    '#description' => t('See more info !link.', array('!link' => '<a href="http://technet.microsoft.com/en-us/library/dd361901.aspx" target="_blank">here</a>')),
   );
 
   $form['bthap']['ie9_ps'] = array(
     '#type' => 'fieldset',
     '#title' => t('IE9 Pinned Sites'),
+    '#description' => t('Windows Internet Explorer 9 introduces pinned sites, a feature with which you can integrate your websites with the Windows 7 desktop. More info can be seen !link.', array('!link' => 'a< href="http://msdn.microsoft.com/en-us/library/gg131029.aspx" target="_blank">here</a>')),
   );
 
   $form['bthap']['ie9_ps']['bthap_ie9_ps_app_name'] = array(
@@ -57,5 +58,12 @@ function bthap_form_system_theme_settings_alter(&$form, &$form_state) {
     '#type' => 'checkbox',
     '#title' => t('Application Start URL uses secure protocol'),
     '#default_value' => theme_get_setting('bthap_ie9_ps_starturl_https'),
+  );
+
+  $form['bthap']['ie9_ps']['bthap_ie9_ps_color'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Application navigation button color'),
+    '#description' => t('The color of the Back and Forward buttons in the pinned site browser window. Any named color, or hex color value as defined by Cascading Style Sheets (CSS), Level 3 (CSS3) is valid.'),
+    '#default_value' => theme_get_setting('bthap_ie9_ps_color'),
   );
 }

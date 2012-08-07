@@ -29,3 +29,4 @@ settings[bthap_ie9_ps_app_name]             = ""
 settings[bthap_ie9_ps_tooltip]              = ""
 settings[bthap_ie9_ps_starturl]             = "<front>"
 settings[bthap_ie9_ps_starturl_https]       = 0
+settings[bthap_ie9_ps_color]                = ""

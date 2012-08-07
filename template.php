@@ -92,6 +92,16 @@ function bthap_html_head_alter(&$elements) {
     ),
     '#access' => theme_get_setting('bthap_ie9_ps_starturl') != FALSE,
   );
+
+  $elements['bthap_ie']['bthap_ie9_ps_color'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'msapplication-navbutton-color',
+      'content' => theme_get_setting('bthap_ie9_ps_color'),
+    ),
+    '#access' => theme_get_setting('bthap_ie9_ps_color') != FALSE,
+  );
 }
 
 /**
