@@ -14,6 +14,17 @@ function bthap_html_head_alter(&$elements) {
     ),
   );
 
+  $humanstxt_file = DRUPAL_ROOT . '/humans.txt';
+  $elements['bthap_humanstxt'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'author',
+      'href' => $humanstxt_file,
+    ),
+    '#access' => theme_get_setting('bthap_humanstxt') && file_exists($humanstxt_file),
+  );
+
   // Add HTML5 shiv @todo make configurable and provide local copy fallback
   $elements['bthap_html5_shiv'] = array(
     '#type' => 'html_tag',

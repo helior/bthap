@@ -12,6 +12,17 @@ function bthap_form_system_theme_settings_alter(&$form, &$form_state) {
     '#weight' => -10,
   );
 
+  $humans_txt_exists = file_exists(DRUPAL_ROOT . '/humans.txt');
+  $form['bthap']['bthap_humanstxt'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Link to humans.txt'),
+    '#description' => $humans_txt_exists
+      ? t('!alert. This checkbox will allow you to link to it from the page source.', array('!alert' => '<strong>' . t('humans.txt was found') . '</strong>'))
+      : t('!alert. Create a humans.txt in the Drupal root (or not..) Read !link for more info.', array('!alert' => '<strong>' . t('humans.txt is missing') . '</strong>', '!link' => '<a href="http://humanstxt.org/" target="_blank">humanstxt.org</a>')),
+    '#disabled' => !$humans_txt_exists,
+    '#default_value' => $humans_txt_exists && theme_get_setting('bthap_humanstxt'),
+  );
+
   $form['bthap']['bthap_ie_chrome_compatibility'] = array(
     '#type' => 'checkbox',
     '#title' => t('Forces "Edge" render system and Google Chrome Frame for Internet Explorer'),

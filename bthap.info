@@ -23,6 +23,7 @@ plugins[panels][layouts] = plugins/layouts
 ; [1] Panels Everywhere http://drupal.org/project/panels_everywhere
 ; [2] HTML5 Boilerplate http://html5boilerplate.com/
 
+settings[bthap_humanstxt]                  = 1
 settings[bthap_ie_chrome_compatibility]     = 1
 settings[bthap_suppress_ie6_image_toolbar]  = 1
 settings[bthap_ie9_ps_app_name]             = ""
