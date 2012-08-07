@@ -20,9 +20,9 @@ function bthap_html_head_alter(&$elements) {
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'author',
-      'href' => $humanstxt_file,
+      'href' =>  base_path() . 'humans.txt',
     ),
-    '#access' => theme_get_setting('bthap_humanstxt') && file_exists($humanstxt_file),
+    '#access' => theme_get_setting('bthap_humanstxt') && file_exists(DRUPAL_ROOT . '/humans.txt'),
   );
 
   // Add HTML5 shiv @todo make configurable and provide local copy fallback
