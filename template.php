@@ -4,24 +4,6 @@
  * Implements hook_html_head_alter().
  */
 function bthap_html_head_alter(&$elements) {
-  // @see http://html5boilerplate.com/docs/The-markup/#make-sure-the-latest-version-of-ie-is-used.
-  // Force IE browsers to render with Google Chrome Frame plugin, if installed
-  // locally. Otherwise, force IE browsers to never fall back to compatibility
-  // mode ( IE 7 mode). However, sometimes we need to allow the option to
-  // fallback to compatibility mode when we're debugging for IE 7 (but want to
-  // use IE8's slightly better developer tools) So you can disable this feature
-  // in the theme settings.
-  $elements['bthap_x_ua_compatible'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'http-equiv' => 'X-UA-Compatible',
-      'content' => 'IE=edge,chrome=1',
-    ),
-    '#access' => !theme_get_setting('disable_x_ua_compatibility'),
-  );
-
-
   // Optimize the mobile viewport.
   $elements['bthap_viewport'] = array(
     '#type' => 'html_tag',
@@ -46,7 +28,70 @@ function bthap_html_head_alter(&$elements) {
     ),
   );
 
+  // Container for all generic Internet Explorer headers.
+  $elements['bthap_ie'] = array(
+    '#prefix' => "<!--[if IE]>\n",
+    '#suffix' =>  "<![endif]-->\n",
+  );
 
+  // @see http://html5boilerplate.com/docs/The-markup/#make-sure-the-latest-version-of-ie-is-used.
+  // Force IE browsers to render with Google Chrome Frame plugin, if installed
+  // locally. Otherwise, force IE browsers to never fall back to compatibility
+  // mode ( IE 7 mode). However, sometimes we need to allow the option to
+  // fallback to compatibility mode when we're debugging for IE 7 (but want to
+  // use IE8's slightly better developer tools) So you can disable this feature
+  // in the theme settings.
+  $elements['bthap_ie']['bthap_ie_chrome_compatibility'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'X-UA-Compatible',
+      'content' => 'IE=edge,chrome=1',
+    ),
+    '#access' => theme_get_setting('bthap_ie_chrome_compatibility'),
+  );
+
+  // Kill IE6's pop-up-on-mouseover toolbar for images that can interfere with
+  // certain designs and be pretty distracting in general.
+  $elements['bthap_ie']['bthap_suppress_ie6_image_toolbar'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'imagetoolbar',
+      'content' => 'false',
+    ),
+    '#access' => theme_get_setting('bthap_suppress_ie6_image_toolbar'),
+  );
+
+  $elements['bthap_ie']['bthap_ie9_ps_app_name'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'application-name',
+      'content' => theme_get_setting('bthap_ie9_ps_app_name'),
+    ),
+    '#access' => theme_get_setting('bthap_ie9_ps_app_name') != FALSE,
+  );
+
+  $elements['bthap_ie']['bthap_ie9_ps_tooltip'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'msapplication-tooltip',
+      'content' => theme_get_setting('bthap_ie9_ps_tooltip'),
+    ),
+    '#access' => theme_get_setting('bthap_ie9_ps_tooltip') != FALSE,
+  );
+
+  $elements['bthap_ie']['bthap_ie9_ps_starturl'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'msapplication-starturl',
+      'content' => url(theme_get_setting('bthap_ie9_ps_starturl'), array('absolute' => TRUE, 'https' => (bool) theme_get_setting('bthap_ie9_ps_starturl_https'))),
+    ),
+    '#access' => theme_get_setting('bthap_ie9_ps_starturl') != FALSE,
+  );
 }
 
 /**
